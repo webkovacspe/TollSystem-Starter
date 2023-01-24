@@ -19,7 +19,7 @@ public class Main {
         VehicleInteractor vehicleInteractor = new VehicleInteractor();
         VehicleRegisterStorageInterface vehicleRegisterStorage = new PersistenceStorageCSV();
         vehicleInteractor.setStorageImp(vehicleRegisterStorage);
-        VehicleRegisterPresenterInterface vehicleRegisterPresenter = new VehicleRegisterPresenterImp();
+        VehicleRegisterPresenterImp vehicleRegisterPresenter = new VehicleRegisterPresenterImp();
         vehicleInteractor.setPresenterImp(vehicleRegisterPresenter);
         motorwayVignetteInteractor.setVehicleRegisterImp(vehicleInteractor);
 
@@ -28,6 +28,7 @@ public class Main {
 
         MotorwayVignettePresenterInterface motorwayVignettePresenter = new TollSystemAppPresenterImp();
         motorwayVignetteInteractor.setPresenterImp(motorwayVignettePresenter);
+        motorwayVignetteInteractor.setVehicleRegisterPresenter(vehicleRegisterPresenter);
 
         TollSystemConsoleUIController consoleUIController = new TollSystemConsoleUIController();
         consoleUIController.setMotorwayVignetteImp(motorwayVignetteInteractor);
