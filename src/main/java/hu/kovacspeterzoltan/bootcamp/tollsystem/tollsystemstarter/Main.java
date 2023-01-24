@@ -5,6 +5,7 @@ import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystemconsoleui.dto.TollSyst
 import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystempersistencestorage.TollSystemPersistenceStorage;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.MotorwayVignetteInteractor;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.api.MotorwayVignettePresenterInterface;
+import hu.kovacspeterzoltan.bootcamp.tollsystemapp.presenter.VehicleRegisterPresenterImp;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.storage.MotorwayVignetteStorageInterface;
 import hu.kovacspeterzoltan.bootcamp.vehiclepersistencestorage.PersistenceStorageCSV;
 import hu.kovacspeterzoltan.bootcamp.vehicleregister.VehicleInteractor;
@@ -17,8 +18,10 @@ public class Main {
         VehicleInteractor vehicleInteractor = new VehicleInteractor();
         VehicleRegisterStorageInterface vehicleRegisterStorage = new PersistenceStorageCSV();
         vehicleInteractor.setStorageImp(vehicleRegisterStorage);
-        vehicleInteractor.setPresenterImp(motorwayVignetteInteractor);
+        VehicleRegisterPresenterImp vehicleRegisterPresenter = new VehicleRegisterPresenterImp();
+        vehicleInteractor.setPresenterImp(vehicleRegisterPresenter);
         motorwayVignetteInteractor.setVehicleRegisterImp(vehicleInteractor);
+        motorwayVignetteInteractor.setVehicleRegisterPresenterImp(vehicleRegisterPresenter);
 
         MotorwayVignetteStorageInterface motorwayVignetteStorage = new TollSystemPersistenceStorage();
         motorwayVignetteInteractor.setStorageImp(motorwayVignetteStorage);
