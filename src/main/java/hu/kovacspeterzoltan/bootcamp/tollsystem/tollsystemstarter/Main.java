@@ -5,11 +5,9 @@ import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystemconsoleui.dto.TollSyst
 import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystempersistencestorage.TollSystemPersistenceStorage;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.MotorwayVignetteInteractor;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.api.MotorwayVignettePresenterInterface;
-import hu.kovacspeterzoltan.bootcamp.tollsystemapp.dto.VehicleRegisterPresenterImp;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.storage.MotorwayVignetteStorageInterface;
 import hu.kovacspeterzoltan.bootcamp.vehiclepersistencestorage.PersistenceStorageCSV;
 import hu.kovacspeterzoltan.bootcamp.vehicleregister.VehicleInteractor;
-import hu.kovacspeterzoltan.bootcamp.vehicleregister.api.VehicleRegisterPresenterInterface;
 import hu.kovacspeterzoltan.bootcamp.vehicleregister.storage.VehicleRegisterStorageInterface;
 
 public class Main {
@@ -19,8 +17,7 @@ public class Main {
         VehicleInteractor vehicleInteractor = new VehicleInteractor();
         VehicleRegisterStorageInterface vehicleRegisterStorage = new PersistenceStorageCSV();
         vehicleInteractor.setStorageImp(vehicleRegisterStorage);
-        VehicleRegisterPresenterImp vehicleRegisterPresenter = new VehicleRegisterPresenterImp();
-        vehicleInteractor.setPresenterImp(vehicleRegisterPresenter);
+        vehicleInteractor.setPresenterImp(motorwayVignetteInteractor);
         motorwayVignetteInteractor.setVehicleRegisterImp(vehicleInteractor);
 
         MotorwayVignetteStorageInterface motorwayVignetteStorage = new TollSystemPersistenceStorage();
@@ -28,7 +25,6 @@ public class Main {
 
         MotorwayVignettePresenterInterface motorwayVignettePresenter = new TollSystemAppPresenterImp();
         motorwayVignetteInteractor.setPresenterImp(motorwayVignettePresenter);
-        motorwayVignetteInteractor.setVehicleRegisterPresenter(vehicleRegisterPresenter);
 
         TollSystemConsoleUIController consoleUIController = new TollSystemConsoleUIController();
         consoleUIController.setMotorwayVignetteImp(motorwayVignetteInteractor);
