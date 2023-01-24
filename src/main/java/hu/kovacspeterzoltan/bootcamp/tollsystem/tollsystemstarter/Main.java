@@ -2,6 +2,7 @@ package hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystemstarter;
 
 import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystemconsoleui.controller.TollSystemConsoleUIController;
 import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystemconsoleui.presenter.TollSystemAppPresenterImp;
+import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystemconsoleui.view.TollSystemConsoleUIView;
 import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystempersistencestorage.TollSystemPersistenceStorage;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.MotorwayVignetteInteractor;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.api.MotorwayVignettePresenterInterface;
@@ -32,6 +33,9 @@ public class Main {
         TollSystemConsoleUIController consoleUIController = new TollSystemConsoleUIController();
         consoleUIController.setMotorwayVignetteImp(motorwayVignetteInteractor);
 
-        consoleUIController.start();
+        TollSystemConsoleUIView consoleUIView = new TollSystemConsoleUIView();
+        consoleUIView.setController(consoleUIController);
+
+        consoleUIView.start();
     }
 }
