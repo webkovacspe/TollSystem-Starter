@@ -4,26 +4,26 @@ import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystemconsoleui.controller.T
 import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystemconsoleui.presenter.TollSystemAppPresenterImp;
 import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystemconsoleui.view.TollSystemConsoleUIView;
 import hu.kovacspeterzoltan.bootcamp.tollsystem.tollsystempersistencestorage.TollSystemPersistenceStorage;
-import hu.kovacspeterzoltan.bootcamp.tollsystem.vehicleregisterplugin.VehicleRegisterFindIteractor;
+import hu.kovacspeterzoltan.bootcamp.tollsystem.vehicleregisterplugin.VehicleRegisterFindInteractor;
 import hu.kovacspeterzoltan.bootcamp.tollsystem.vehicleregisterplugin.presenter.VehicleRegisterPresenterImp;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.MotorwayVignetteInteractor;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.api.MotorwayVignettePresenterInterface;
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.storage.MotorwayVignetteStorageInterface;
-import hu.kovacspeterzoltan.bootcamp.vehiclepersistencestorage.PersistenceStorageCSV;
+import hu.kovacspeterzoltan.bootcamp.vehiclepersistencestorage.VehicleRegisterPersistenceStorageCSVPlugIn;
 import hu.kovacspeterzoltan.bootcamp.vehicleregister.VehicleInteractor;
-import hu.kovacspeterzoltan.bootcamp.vehicleregister.storage.VehicleRegisterStorageInterface;
+import hu.kovacspeterzoltan.bootcamp.vehicleregister.storage.VehicleRegisterStoragePlugInInterface;
 
 public class Main {
     public static void main(String[] args) {
         VehicleInteractor vehicleInteractor = new VehicleInteractor();
 
-        VehicleRegisterStorageInterface vehicleRegisterStorage = new PersistenceStorageCSV();
-        vehicleInteractor.setStorageImp(vehicleRegisterStorage);
+        VehicleRegisterStoragePlugInInterface vehicleStorage = new VehicleRegisterPersistenceStorageCSVPlugIn();
+        vehicleInteractor.setStoragePlugInImp(vehicleStorage);
 
         VehicleRegisterPresenterImp vehicleRegisterPresenter = new VehicleRegisterPresenterImp();
-        vehicleInteractor.setPresenterImp(vehicleRegisterPresenter);
+        vehicleInteractor.setPresenterPlugInImp(vehicleRegisterPresenter);
 
-        VehicleRegisterFindIteractor vehicleRegisterPlugIn = new VehicleRegisterFindIteractor();
+        VehicleRegisterFindInteractor vehicleRegisterPlugIn = new VehicleRegisterFindInteractor();
         vehicleRegisterPlugIn.setVehicleRegisterFindImp(vehicleInteractor);
         vehicleRegisterPlugIn.setVehicleRegisterPresenterImp(vehicleRegisterPresenter);
 
