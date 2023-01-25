@@ -11,7 +11,6 @@ import hu.kovacspeterzoltan.bootcamp.tollsystemapp.api.MotorwayVignettePresenter
 import hu.kovacspeterzoltan.bootcamp.tollsystemapp.storage.MotorwayVignetteStorageInterface;
 import hu.kovacspeterzoltan.bootcamp.vehiclepersistencestorage.PersistenceStorageCSV;
 import hu.kovacspeterzoltan.bootcamp.vehicleregister.VehicleInteractor;
-import hu.kovacspeterzoltan.bootcamp.vehicleregister.api.VehicleRegisterPresenterInterface;
 import hu.kovacspeterzoltan.bootcamp.vehicleregister.storage.VehicleRegisterStorageInterface;
 
 public class Main {
