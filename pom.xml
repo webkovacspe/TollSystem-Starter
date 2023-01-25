@@ -33,6 +33,17 @@
             <artifactId>TollSystemConsoleUI</artifactId>
             <version>2.0</version>
         </dependency>
+        <dependency>
+            <groupId>hu.kovacspeterzoltan.bootcamp.tollsystem.vehicleregisterplugin</groupId>
+            <artifactId>VehicleRegisterPlug-In</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>hu.kovacspeterzoltan.bootcamp.tollsystem.vehicleregisterplugin</groupId>
+            <artifactId>VehicleRegisterPlug-In</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
